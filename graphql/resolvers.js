@@ -1,9 +1,10 @@
-const { people, getPersonById } = require('./db');
+const { getMovies, getMovie, getSuggestions } = require('./db');
 
 const resolvers = {
   Query: {
-    people: () => people,
-    person: (_, { id }) => getPersonById(id)
+    movies: (_, { limit, minRating }) => getMovies(limit, minRating),
+    movie: (_, { id }) => getMovie(id),
+    suggestions: (_, { id }) => getSuggestions(id)
   }
 };
 
